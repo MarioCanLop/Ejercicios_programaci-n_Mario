@@ -89,7 +89,7 @@ public class Ejercicios {
             } else {
                 System.out.println("Dame la altura");
                 int num2 = entrada.nextInt();
-                if (num2 > 0) {
+                if (num2 < 0) {
                     System.out.println("El valor tiene que ser positivo");
                 } else {
                     if (num2 == 0) {
@@ -97,11 +97,24 @@ public class Ejercicios {
                     } else {
                         int resultado1 = num1 * num2;
                         int resultado2 = resultado1 / 2;
-                        System.out.println("El area del triangulo es" + resultado2);
+                        System.out.println("El area del triangulo es " + resultado2);
                     }
 
                 }
             }
         }
+    }
+
+    public void ejercicio_5(){
+        System.out.println("Dame un Numero");
+        Scanner entrada = new Scanner(System.in);
+        int num1 = entrada.nextInt();
+        System.out.println("Dame otro Numero");
+        int num2 = entrada.nextInt();
+        System.out.println("Dame otro Numero");
+        int num3 = entrada.nextInt();
+        if (num1 == num2 || num1 == num3 || num2 == num3){
+            System.out.println("Error No puedes tener numeros iguales");}
+        
     }
 }

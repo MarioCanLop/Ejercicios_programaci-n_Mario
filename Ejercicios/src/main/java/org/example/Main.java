@@ -9,9 +9,6 @@ public class Main {
     public static void main(String[] args) {
 
         Ejercicios ejercicio = new Ejercicios();
-        ejercicio.ejercicio_4();
-
-
+        ejercicio.ejercicio_5();
     }
-
 }
