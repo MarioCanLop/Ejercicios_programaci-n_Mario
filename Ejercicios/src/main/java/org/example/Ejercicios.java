@@ -1,5 +1,6 @@
 package org.example;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Ejercicios {
@@ -116,5 +117,54 @@ public class Ejercicios {
         if (num1 == num2 || num1 == num3 || num2 == num3){
             System.out.println("Error No puedes tener numeros iguales");}
         
+    }
+
+    public void excepciones(){ //Esto hay que usarlo en los programas para que no de un error si en vez de un numero pone una letra
+        Scanner entrada = new Scanner(System.in);
+
+        int numero;
+
+        boolean error = true;
+
+        while (error == true){
+
+            try {
+                System.out.println("Introduce un numero ...");
+                numero = entrada.nextInt();
+                error = false;
+            }catch (InputMismatchException er){
+                System.out.println("ERROR, Introduce un valor vlaido ...");
+                entrada.nextLine();
+            }
+        }
+    }
+
+    public void ejercicio_Act3() {
+        System.out.println("Introduce tu nombre");
+        Scanner entrada = new Scanner(System.in);
+        String nombre = entrada.next();
+        boolean error = true;
+        int edad = 0;
+        while (error == true) {
+            try {
+                System.out.println("Hola " + nombre + " Introduce tu edad: ");
+                edad = entrada.nextInt();
+                if (edad <= 0) {
+                    System.out.println("Hola " + nombre + " Introduce tu edad: ");
+                    edad = entrada.nextInt();
+                }
+                error = false;
+            } catch (InputMismatchException er) {
+                System.out.println("Error, Introduce un valor valido");
+                entrada.nextLine();
+            }
+        }
+        if (edad >= 18) {
+            System.out.println("Enorabuena " + nombre + " Puedes votar.");
+        } else {
+            System.out.println("Lo siento " + nombre + " no puedes votar.");
+            int resultado = 18 - edad;
+            System.out.println("Te faltan " + resultado + " años para poder votar");
+        }
     }
 }
