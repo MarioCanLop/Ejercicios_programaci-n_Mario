@@ -1,5 +1,6 @@
 package org.example;
 
+import java.awt.*;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -167,4 +168,61 @@ public class Ejercicios {
             System.out.println("Te faltan " + resultado + " años para poder votar");
         }
     }
+
+    public void ejercicio_Act4() {
+        Scanner entrada = new Scanner(System.in);
+
+        int num2 = 0;
+        int num1 = 0;
+        int resultado = 0;
+
+        boolean error = false;
+
+        while (error == false) {
+
+            try {
+                System.out.println("Dame un numero de 3 cifras");
+                num1 = entrada.nextInt();
+                while (num1 < 100) {
+                    System.out.println("Dame un numero de 3 cifras");
+                    num1 = entrada.nextInt();
+                }
+                System.out.println("Dame otro numero de 3 cifras");
+                num2 = entrada.nextInt();
+                while (num2 < 100) {
+                    System.out.println("Dame otro numero de 3 cifras");
+                    num2 = entrada.nextInt();
+                }
+                error = true;
+            } catch (InputMismatchException er) {
+                System.out.println("ERROR, Introduce un valor vlaido ...");
+                entrada.nextLine();
+            }
+        }
+        String num2_ent = Integer.toString(num2);
+        String num2_1 = num2_ent.substring(0,1);
+        String num2_2 = num2_ent.substring(1,2);
+        String num2_3 = num2_ent.substring(2,3);
+        int num2_1_1 = Integer.parseInt(num2_1);
+        int num2_2_1 = Integer.parseInt(num2_2);
+        int num2_3_1 = Integer.parseInt(num2_3);
+        resultado = num1 * num2;
+        int par_1 = num1 * num2_1_1;
+        int par_2 = num1 * num2_2_1;
+        int par_3 = num1 * num2_3_1;
+        System.out.println("El producto de la multiplicación es: " + resultado);
+        System.out.println("El proceso es:");
+        System.out.println(+ num1);
+        System.out.println("x" + num2);
+        System.out.println("--------");
+        System.out.println(+ par_3);
+        System.out.println( + par_2 );
+        System.out.println("+ "+ par_1 );
+        System.out.println("--------");
+        System.out.println(+ resultado);
+
+
+
+    }
 }
+
