@@ -5,7 +5,7 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Ejercicios {
-
+//Tema 1
     public void actividad_inicial(){
 
         System.out.println("¿Como te llamas?");
@@ -221,6 +221,49 @@ public class Ejercicios {
         System.out.println("--------");
         System.out.println(+ resultado);
 
+
+
+    }
+
+//Tema 2
+    public void ejerciciotm2_1(){
+        Scanner entrada = new Scanner(System.in);
+
+        System.out.println("INTRODUCE UNA PALABRA O FRASE: ");
+        String frase = entrada.nextLine();
+
+        System.out.println("Texto original: "+ frase);
+        System.out.println("La longuitud del texto es: "+ frase.length());
+        System.out.println("Texto sin espacios: " + frase.replace(" " ,""));
+
+    }
+
+    public void practicatm2_1(){
+        Scanner entrada = new Scanner(System.in);
+        int dia = 0;
+        int mes = 0;
+        int año =0;
+        boolean error = true;
+
+        while(error == true) {
+
+                System.out.println("Dime tu fecha de nacimiento (dd/mm/aaaa)");
+                String fecha = entrada.nextLine();
+                int longitud = fecha_str.length();
+                if (longitud < 10 || longitud > 10){
+                    System.out.println("Dime tu fecha de nacimiento (dd/mm/aaaa)");
+                    fecha = entrada.nextLine();
+
+                }
+                String dia_str = fecha.substring(0,2);
+                String mes_str = fecha.substring(3,5);
+                String ano_str = fecha.substring(6,10);
+                dia = Integer.parseInt(dia_str);
+                mes = Integer.parseInt(mes_str);
+                año = Integer.parseInt(ano_str);
+
+            }
+        }
 
 
     }
