@@ -239,28 +239,55 @@ public class Ejercicios {
     }
 
     public void practicatm2_1(){
-        Scanner entrada = new Scanner(System.in);
+       Scanner entrada = new Scanner(System.in); //Aqui esta lo que se utiliza para saber lo que añade el usuario en el programa
         int dia = 0;
         int mes = 0;
-        int año =0;
-        boolean error = true;
-
-        while(error == true) {
-
-                System.out.println("Dime tu fecha de nacimiento (dd/mm/aaaa)");
-                String fecha = entrada.nextLine();
-                int longitud = fecha_str.length();
-                if (longitud < 10 || longitud > 10){
-                    System.out.println("Dime tu fecha de nacimiento (dd/mm/aaaa)");
-                    fecha = entrada.nextLine();
-
-                }
-                String dia_str = fecha.substring(0,2);
-                String mes_str = fecha.substring(3,5);
-                String ano_str = fecha.substring(6,10);
-                dia = Integer.parseInt(dia_str);
-                mes = Integer.parseInt(mes_str);
-                año = Integer.parseInt(ano_str);
+        int ano = 0;
+        int resultado = 0; //Esto son las variables que voy a usar
+        int char1 = 0;
+        int char2 = 0;
+        int char3 = 0;
+        int char4 = 0;
+        
+        System.out.println("Dime tu fecha de nacimiento (dd/mm/aaaa)"); //Pido la fehca
+        String fecha = entrada.nextLine(); //La guardo
+        if (fecha.length() != 10 || fecha.charAt(2) != '/' || fecha.charAt(5) != '/') { //Compruebo que tenga 10 de largo y que compruebe que las barras estan en los caracteres que deben estar
+            System.out.println("Dime tu fecha de nacimiento (dd/mm/aaaa)"); //Pido otra vez la fecha si algo falla
+            fecha = entrada.nextLine(); // La guardo de vuelta
+        }
+        String dia_str = fecha.substring(0, 2); //Separamos el dia 
+        String mes_str = fecha.substring(3, 5); //Separamos el mes 
+        String ano_str = fecha.substring(6, 10); //Separamos el año
+        dia = Integer.parseInt(dia_str); // Los convertimos en variable int
+        mes = Integer.parseInt(mes_str); // Los convertimos en variable int
+        ano = Integer.parseInt(ano_str); // Los convertimos en variable int
+        if (dia <= 0 || dia > 31) { //Comprobamos que el dia se posible que sea de un mes
+            System.out.println("Dime el dia en que naciste (dd)");
+            dia = entrada.nextInt();
+        }
+        if (mes <= 0 || mes > 12) { //Comprobamos que sea un mes posible y si no nos pide el mes posible
+            System.out.println("Dime el mes en que naciste (mm)"); 
+            mes = entrada.nextInt();
+        }
+        if (ano < 1000 || ano > 2024) {//Comprobamos que el año sea posible y si no nos pide el año posible
+            System.out.println("Dime el dia en que año (aaaa)"); 
+            ano = entrada.nextInt();
+        }
+        System.out.println(dia + "/" + mes + "/" + ano ); //Imprimimos la fecha
+        resultado = dia + mes + ano; //Sumamos la fehca
+        System.out.println(dia + "+" + mes + "+" + ano + "=" + resultado); //Enseñamos la operación junto al resultado
+        String res_str = Integer.toString(resultado); //Convertimos el resultado a string
+        String char1_str = res_str.substring(0, 1); // Sacamos cada caracter del resultado
+        String char2_str = res_str.substring(1, 2); // Sacamos cada caracter del resultado
+        String char3_str = res_str.substring(2, 3); // Sacamos cada caracter del resultado
+        String char4_str = res_str.substring(3, 4); // Sacamos cada caracter del resultado
+        char1 = Integer.parseInt(char1_str); //Los convertimos en int
+        char2 = Integer.parseInt(char2_str); //Los convertimos en int
+        char3 = Integer.parseInt(char3_str); //Los convertimos en int
+        char4 = Integer.parseInt(char4_str); //Los convertimos en int
+        int resultado_2 = char1 + char2 + char3 + char4; // los sumamos para saber el resultado
+        System.out.println(char1 + "+" + char2 + "+" + char3 + "+" + char4 +"=" + resultado_2); // Enseñamos la operación y el resultado
+        System.out.println("Tu numero de la suerte es " + resultado_2); //Enseñamos el numero de la suerte
 
             }
         }
