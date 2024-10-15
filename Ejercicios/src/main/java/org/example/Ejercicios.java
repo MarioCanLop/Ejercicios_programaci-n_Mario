@@ -1,6 +1,8 @@
 package org.example;
 
 import java.awt.*;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -226,18 +228,6 @@ public class Ejercicios {
     }
 
 //Tema 2
-    public void ejerciciotm2_1(){
-        Scanner entrada = new Scanner(System.in);
-
-        System.out.println("INTRODUCE UNA PALABRA O FRASE: ");
-        String frase = entrada.nextLine();
-
-        System.out.println("Texto original: "+ frase);
-        System.out.println("La longuitud del texto es: "+ frase.length());
-        System.out.println("Texto sin espacios: " + frase.replace(" " ,""));
-
-    }
-
     public void practicatm2_1(){
        Scanner entrada = new Scanner(System.in); //Aqui esta lo que se utiliza para saber lo que añade el usuario en el programa
         int dia = 0;
@@ -251,6 +241,7 @@ public class Ejercicios {
         
         System.out.println("Dime tu fecha de nacimiento (dd/mm/aaaa)"); //Pido la fehca
         String fecha = entrada.nextLine(); //La guardo
+
         if (fecha.length() != 10 || fecha.charAt(2) != '/' || fecha.charAt(5) != '/') { //Compruebo que tenga 10 de largo y que compruebe que las barras estan en los caracteres que deben estar
             System.out.println("Dime tu fecha de nacimiento (dd/mm/aaaa)"); //Pido otra vez la fecha si algo falla
             fecha = entrada.nextLine(); // La guardo de vuelta
@@ -288,8 +279,105 @@ public class Ejercicios {
         int resultado_2 = char1 + char2 + char3 + char4; // los sumamos para saber el resultado
         System.out.println(char1 + "+" + char2 + "+" + char3 + "+" + char4 +"=" + resultado_2); // Enseñamos la operación y el resultado
         System.out.println("Tu numero de la suerte es " + resultado_2); //Enseñamos el numero de la suerte
+    }
 
+    public void errores (){
+
+        Scanner teclado = new Scanner(System.in);
+        System.out.println("Dame un dividendo: ");
+        int dividendo = 0; //InputMismatchException
+        boolean error = false;
+
+        if(teclado.hasNextInt() == true){
+            dividendo = teclado.nextInt();
+        }else{
+            System.out.println("Has introducido mal el formato, introduce un numero");
+            error = true;
+        }
+
+        if (error== false){
+            System.out.println("Dame un dividendo: ");
+            dividendo = teclado.nextInt();
+        }
+        System.out.println("Dame un divisor: ");
+        String divisor = teclado.next(); //NumberFormatException
+        int divisor_2 = 0;
+
+        try {
+            divisor_2 = Integer.parseInt(divisor); //NumberFormatException
+        }catch (NumberFormatException e1){
+            System.out.println("Error de formato" + e1.getMessage());
+        }
+        int resultado = 0;
+        try {
+            resultado = dividendo / divisor_2;//ArithmeticException
+
+        }catch (ArithmeticException e2){
+            System.out.println("No se puede dividir entre 0" + e2.getMessage());
+        }
+        System.out.println("Resultado = " +resultado);
+    }
+
+    public void excepciones_2(){
+        Scanner teclado =new Scanner(System.in);
+        boolean error = true;
+        int modo = 0;
+        int año = 0;
+        int edad = 0;
+        int edad_año = 0;
+        LocalDateTime año_act = LocalDateTime.now();
+        int año_ahora = año_act.getYear();
+
+        while (error == true) {
+            System.out.println("Elige el modo: ");
+            System.out.println("Modo 1: ");
+            System.out.println("Modo 2: ");
+
+            try {
+                modo = teclado.nextInt();
+                if (modo == 1) {
+                    System.out.println("Dime tu año de nacimiento");
+                    año = teclado.nextInt();
+                    if (año < 1900 | año > año_ahora) {
+                        System.out.println("Dime tu año de nacimiento");
+                        año = teclado.nextInt();
+                    }
+                    error = false;
+                }
+                if (modo == 2) {
+                    System.out.println("Dime tu edad actual");
+                    edad = teclado.nextInt();
+                    if (edad <= 0) {
+                        System.out.println("Dime tu edad actual");
+                        edad = teclado.nextInt();
+                    }
+                    año = año_ahora - edad;
+                    error = false;
+
+                }
+
+            } catch (InputMismatchException e1) {
+                System.out.println("Erro: Introduce numero");
+                teclado.nextLine();
             }
+        }
+        if (año >= 1900 && año <= 1927){
+            System.out.println("Sin Generación bautizada");
+        }
+        if (año >= 1928 && año <= 1944){
+            System.out.println("Generación Silent ");
+        }
+        if (año >= 1945 && año <= 1964){
+            System.out.println("Baby Boomers");
+        }
+        if (año >= 1965 && año <= 1981){
+            System.out.println("Generación X");
+        }
+        if (año >= 1982 && año <= 1994){
+            System.out.println("Millennials");
+        }
+        if (año >= 1995 && año <= año_ahora){
+            System.out.println("Generación Z");
         }
 
 
