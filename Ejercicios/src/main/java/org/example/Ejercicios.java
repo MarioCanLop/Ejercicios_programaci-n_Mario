@@ -238,31 +238,26 @@ public class Ejercicios {
         int char2 = 0;
         int char3 = 0;
         int char4 = 0;
-        
-        System.out.println("Dime tu fecha de nacimiento (dd/mm/aaaa)"); //Pido la fehca
-        String fecha = entrada.nextLine(); //La guardo
+        boolean error = true;
+        while (error == true) {
+            System.out.println("Dime tu fecha de nacimiento (dd/mm/aaaa)"); //Pido la fehca
+            String fecha = entrada.nextLine(); //La guardo
+            if (fecha.length() != 10 || fecha.charAt(2) != '/' || fecha.charAt(5) != '/') { //Compruebo que tenga 10 de largo y que compruebe que las barras estan en los caracteres que deben estar
+                System.out.println("Dime tu fecha de nacimiento (dd/mm/aaaa)"); //Pido otra vez la fecha si algo falla
+                fecha = entrada.nextLine(); // La guardo de vuelta
+            }
+            String dia_str = fecha.substring(0, 2); //Separamos el dia
+            String mes_str = fecha.substring(3, 5); //Separamos el mes
+            String ano_str = fecha.substring(6, 10); //Separamos el año
+            try {
+                dia = Integer.parseInt(dia_str); // Los convertimos en variable int
+                mes = Integer.parseInt(mes_str); // Los convertimos en variable int
+                ano = Integer.parseInt(ano_str); // Los convertimos en variable int
+                error = false;
+            }catch (NumberFormatException e1) { //El error de introducir una letra
+                System.out.println("Erro: Introduce numero");
 
-        if (fecha.length() != 10 || fecha.charAt(2) != '/' || fecha.charAt(5) != '/') { //Compruebo que tenga 10 de largo y que compruebe que las barras estan en los caracteres que deben estar
-            System.out.println("Dime tu fecha de nacimiento (dd/mm/aaaa)"); //Pido otra vez la fecha si algo falla
-            fecha = entrada.nextLine(); // La guardo de vuelta
-        }
-        String dia_str = fecha.substring(0, 2); //Separamos el dia 
-        String mes_str = fecha.substring(3, 5); //Separamos el mes 
-        String ano_str = fecha.substring(6, 10); //Separamos el año
-        dia = Integer.parseInt(dia_str); // Los convertimos en variable int
-        mes = Integer.parseInt(mes_str); // Los convertimos en variable int
-        ano = Integer.parseInt(ano_str); // Los convertimos en variable int
-        if (dia <= 0 || dia > 31) { //Comprobamos que el dia se posible que sea de un mes
-            System.out.println("Dime el dia en que naciste (dd)");
-            dia = entrada.nextInt();
-        }
-        if (mes <= 0 || mes > 12) { //Comprobamos que sea un mes posible y si no nos pide el mes posible
-            System.out.println("Dime el mes en que naciste (mm)"); 
-            mes = entrada.nextInt();
-        }
-        if (ano < 1000 || ano > 2024) {//Comprobamos que el año sea posible y si no nos pide el año posible
-            System.out.println("Dime el dia en que año (aaaa)"); 
-            ano = entrada.nextInt();
+            }
         }
         System.out.println(dia + "/" + mes + "/" + ano ); //Imprimimos la fecha
         resultado = dia + mes + ano; //Sumamos la fehca
@@ -319,49 +314,49 @@ public class Ejercicios {
     }
 
     public void excepciones_2(){
-        Scanner teclado =new Scanner(System.in);
+        Scanner teclado =new Scanner(System.in); //Escaneo lo que introduzca
         boolean error = true;
         int modo = 0;
-        int año = 0;
+        int año = 0; //Variables para usar
         int edad = 0;
         int edad_año = 0;
         LocalDateTime año_act = LocalDateTime.now();
         int año_ahora = año_act.getYear();
 
-        while (error == true) {
+        while (error == true) { //Bucle para el try catch
             System.out.println("Elige el modo: ");
             System.out.println("Modo 1: ");
             System.out.println("Modo 2: ");
 
-            try {
+            try { //comprobar que sean numeros y no letras
                 modo = teclado.nextInt();
-                if (modo == 1) {
+                if (modo == 1) { //si es modo 1 que haga lo de dentro
                     System.out.println("Dime tu año de nacimiento");
                     año = teclado.nextInt();
-                    if (año < 1900 | año > año_ahora) {
+                    if (año < 1900 | año > año_ahora) { //Si no cumple esta variable que pida otra vez el año
                         System.out.println("Dime tu año de nacimiento");
                         año = teclado.nextInt();
                     }
                     error = false;
                 }
-                if (modo == 2) {
+                if (modo == 2) { //si es modo 2 que haga lo de dentro
                     System.out.println("Dime tu edad actual");
                     edad = teclado.nextInt();
-                    if (edad <= 0) {
+                    if (edad <= 0) { //Si no cumple esta variable que pida otra vez la edad
                         System.out.println("Dime tu edad actual");
                         edad = teclado.nextInt();
                     }
-                    año = año_ahora - edad;
+                    año = año_ahora - edad; //Para saber en que año nacio
                     error = false;
 
                 }
 
-            } catch (InputMismatchException e1) {
+            } catch (InputMismatchException e1) { //El error de introducir una letra
                 System.out.println("Erro: Introduce numero");
                 teclado.nextLine();
             }
         }
-        if (año >= 1900 && año <= 1927){
+        if (año >= 1900 && año <= 1927){ //Comrpueba de la generacion que eres
             System.out.println("Sin Generación bautizada");
         }
         if (año >= 1928 && año <= 1944){
