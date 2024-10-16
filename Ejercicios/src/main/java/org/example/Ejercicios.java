@@ -402,5 +402,64 @@ public class Ejercicios {
         }
 
     }
+
+    public void ejercicio_calculadora() {
+        Scanner entrada = new Scanner(System.in);
+        boolean error = true;
+        boolean error_2 = true;
+        int num1 = 0;
+        int num2 = 0;
+        double result = 0;
+
+        String signo;
+        while (error = true) {
+            try {
+                while (error_2 == true) {
+                    System.out.println("BIENVENIDO A LA CALCULADORA RÁPIDA");
+                    System.out.println("Intoduce el primer operando");
+                    num1 = entrada.nextInt();
+                    System.out.println("Introduce el signo a aplicar (+, -, x, /, R)");
+                    signo = entrada.next();
+                    if (signo == "R") {
+                        while (num1 < 0) {
+                            System.out.println("Intoduce el primer operando");
+                            num1 = entrada.nextInt();
+                        }
+                    }
+
+                    switch (signo) {
+                        case "+":
+                            result = num1 + num2;
+                            break;
+                        case "-":
+                            result = num1 - num2;
+                            break;
+                        case "/":
+                            result = num1 / num2;
+                            break;
+                        case "x":
+                            result = num1 * num2;
+                            break;
+                        case "R":
+                            double result_raiz = Math.sqrt(num1);
+                            result = result_raiz;
+                            break;
+                    }
+                    error_2 = false;
+                    error = false;
+                }
+
+
+            } catch (InputMismatchException e1) {
+                System.out.println("Error introduce el caracter correcto");
+                entrada.nextLine();
+            } catch (ArithmeticException e2) {
+                System.out.println("No se puede dividir entre 0");
+
+            }
+
+        }
+        System.out.println("El resultado de tu operación es: " + result);
+    }
 }
 
