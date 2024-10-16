@@ -320,6 +320,7 @@ public class Ejercicios {
         int año = 0; //Variables para usar
         int edad = 0;
         int edad_año = 0;
+        int caso = 0;
         LocalDateTime año_act = LocalDateTime.now();
         int año_ahora = año_act.getYear();
 
@@ -330,24 +331,27 @@ public class Ejercicios {
 
             try { //comprobar que sean numeros y no letras
                 modo = teclado.nextInt();
-                if (modo == 1) { //si es modo 1 que haga lo de dentro
-                    System.out.println("Dime tu año de nacimiento");
-                    año = teclado.nextInt();
-                    if (año < 1900 | año > año_ahora) { //Si no cumple esta variable que pida otra vez el año
+                switch (modo) {
+                    case 1: //En caso de que modo sea 1 hace esto
                         System.out.println("Dime tu año de nacimiento");
                         año = teclado.nextInt();
-                    }
-                    error = false;
-                }
-                if (modo == 2) { //si es modo 2 que haga lo de dentro
-                    System.out.println("Dime tu edad actual");
-                    edad = teclado.nextInt();
-                    if (edad <= 0) { //Si no cumple esta variable que pida otra vez la edad
+                        while (año < 1900 | año > año_ahora) { //Si no cumple esta variable que pida otra vez el año
+                            System.out.println("Dime tu año de nacimiento");
+                            año = teclado.nextInt();
+                        }
+                        error = false;
+                        break;
+
+                    case 2: //En caso de que modo sea 2 hace esto
                         System.out.println("Dime tu edad actual");
                         edad = teclado.nextInt();
-                    }
-                    año = año_ahora - edad; //Para saber en que año nacio
-                    error = false;
+                        if (edad <= 0 || edad >= 120) { //Si no cumple esta variable que pida otra vez la edad
+                            System.out.println("Dime tu edad actual");
+                            edad = teclado.nextInt();
+                        }
+                        año = año_ahora - edad; //Para saber en que año nacio
+                        error = false;
+                        break;
 
                 }
 
@@ -357,24 +361,45 @@ public class Ejercicios {
             }
         }
         if (año >= 1900 && año <= 1927){ //Comrpueba de la generacion que eres
-            System.out.println("Sin Generación bautizada");
+            caso = 1;
+
         }
         if (año >= 1928 && año <= 1944){
-            System.out.println("Generación Silent ");
+            caso = 2;
         }
         if (año >= 1945 && año <= 1964){
-            System.out.println("Baby Boomers");
+            caso = 3;
         }
         if (año >= 1965 && año <= 1981){
-            System.out.println("Generación X");
+
+            caso = 4;
         }
         if (año >= 1982 && año <= 1994){
-            System.out.println("Millennials");
+            caso = 5;
         }
         if (año >= 1995 && año <= año_ahora){
-            System.out.println("Generación Z");
+            caso = 6;
         }
-
+        switch (caso){//En caso de que valor tenga la variable caso imprime una generación o otra
+            case 1:
+                System.out.println("Sin Generación bautizada");
+                break;
+            case 2:
+                System.out.println("Generación Silent ");
+                break;
+            case 3:
+                System.out.println("Baby Boomers");
+                break;
+            case 4:
+                System.out.println("Generación X");
+                break;
+            case 5:
+                System.out.println("Millennials");
+                break;
+            case 6:
+                System.out.println("Generación Z");
+                break;
+        }
 
     }
 }
