@@ -1,6 +1,6 @@
 package org.example;
 
-import java.io.PrintStream;
+import java.io.PrintStream;hgo
 import java.util.Scanner;
 
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or

@@ -407,59 +407,72 @@ public class Ejercicios {
         Scanner entrada = new Scanner(System.in);
         boolean error = true;
         boolean error_2 = true;
-        int num1 = 0;
+        int num1 = 0;  //Estas son las variables que voy a usar durante el programa
         int num2 = 0;
         double result = 0;
 
         String signo;
-        while (error = true) {
+        while (error == true) { //creo un while para que si se activa el catch no acabe el programa
             try {
-                while (error_2 == true) {
                     System.out.println("BIENVENIDO A LA CALCULADORA RÁPIDA");
                     System.out.println("Intoduce el primer operando");
                     num1 = entrada.nextInt();
                     System.out.println("Introduce el signo a aplicar (+, -, x, /, R)");
                     signo = entrada.next();
-                    if (signo == "R") {
+
+                    if (signo.equals("R")) { //Compruebo que sea R por si el num1 es negativo que se añada un positivo
                         while (num1 < 0) {
                             System.out.println("Intoduce el primer operando");
                             num1 = entrada.nextInt();
                         }
                     }
-
-                    switch (signo) {
+                    switch (signo) { //con este switch hago que depende el signo haga una cosa o otra
                         case "+":
+                            System.out.println("Intoduce el segundo operando");
+                            num2 = entrada.nextInt();
                             result = num1 + num2;
+                            error_2 = false;
+                            error = false;
                             break;
                         case "-":
+                            System.out.println("Intoduce el segundo operando");
+                            num2 = entrada.nextInt();
                             result = num1 - num2;
+                            error_2 = false;
+                            error = false;
                             break;
                         case "/":
+                            System.out.println("Intoduce el segundo operando");
+                            num2 = entrada.nextInt();
                             result = num1 / num2;
+                            error_2 = false;
+                            error = false;
                             break;
                         case "x":
+                            System.out.println("Intoduce el segundo operando");
+                            num2 = entrada.nextInt();
                             result = num1 * num2;
+                            error_2 = false;
+                            error = false;
                             break;
-                        case "R":
+                        case "R": //No pido otro numero porque para la raiz cuadrada solo se necesita un numero
                             double result_raiz = Math.sqrt(num1);
                             result = result_raiz;
+
+                            error_2 = false;
+                            error = false;
                             break;
                     }
-                    error_2 = false;
-                    error = false;
-                }
 
 
-            } catch (InputMismatchException e1) {
+            } catch (InputMismatchException e1) { //Error de caracter
                 System.out.println("Error introduce el caracter correcto");
                 entrada.nextLine();
-            } catch (ArithmeticException e2) {
+            } catch (ArithmeticException e2) {  // Error de dividir entre 0
                 System.out.println("No se puede dividir entre 0");
-
             }
-
         }
-        System.out.println("El resultado de tu operación es: " + result);
+        System.out.println("El resultado de tu operación es: " + result); //Imprimo el resultado de la operación
     }
 }
 
