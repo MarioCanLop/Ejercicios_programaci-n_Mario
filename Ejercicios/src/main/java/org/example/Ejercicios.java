@@ -474,5 +474,51 @@ public class Ejercicios {
         }
         System.out.println("El resultado de tu operación es: " + result); //Imprimo el resultado de la operación
     }
+
+    public void ejercicio_practica3(){
+        Scanner entrada = new Scanner(System.in);
+        String isbm;
+        int temp2 = 0;
+        int divisor = 0;
+        int reiduo = 0;
+        int x = 10;
+        int posicion = 0;
+        boolean error = true;
+        while (error == true) {
+            try {
+                System.out.println("Introdcue el ISBN");
+                isbm = entrada.next();
+                while (isbm.length() != 10) {
+                    System.out.println("El ISBN tiene que tener 10 caracteres");
+                    isbm = entrada.next();
+                }
+                for (int i = 0; i < 10; i++) {
+                    posicion = i;
+                    String temp = String.valueOf(isbm.charAt(i));
+                    if (temp.equals("?")){
+                        
+                    }
+                    if (x == 1 && temp.equals("X")) {
+                        divisor = divisor + 10;
+                        x--;
+                    } else {
+                        temp2 = Integer.parseInt(temp);
+                        divisor += x * temp2;
+                        x--;
+                    }
+                }
+                reiduo = divisor % 11;
+                if (reiduo == 0){
+                    System.out.println("El ISBN es valido");
+                }else{
+                    System.out.println("El ISBN no es valido");
+                }
+                error = false;
+            } catch (NumberFormatException e1) {
+
+                System.out.println("Error:Te has equivocado en el caracter");
+            }
+        }
+    }
 }
 
