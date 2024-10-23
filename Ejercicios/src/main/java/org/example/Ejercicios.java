@@ -480,10 +480,11 @@ public class Ejercicios {
         String isbm;
         int temp2 = 0;
         int divisor = 0;
-        int reiduo = 0;
+        int reiduo = 1;
         int x = 10;
-        int z = 1;
-        int b = 1;
+        int z = 0;
+        int a = 1;
+        int b = 10;
         int posicion = 0;
         int posint = 0;
         int resprue = 1;
@@ -512,20 +513,17 @@ public class Ejercicios {
                         x--;
                     }
                 }
-                while(resprue == 0){
-                   switch (posint){
-                       case 0:
-                            for (int a = 1; a < 10; a++);
-                            if (reiduo != 0) {
-                                reiduo = divisor % (b * 10);
-                                b++;
-                            }else{
-                                break;
-                            }
-
-                   }
+                if (posint != 0){
+                    while (posint != b) {
+                        b--;
+                    }
+                    do {
+                        reiduo = divisor + (a * b) % 11;
+                        a++;
+                    }while (reiduo != 0);
+                }else {
+                    reiduo = divisor % 11;
                 }
-                reiduo = divisor % 11;
                 if (reiduo == 0){
                     System.out.println("El ISBN es valido");
                 }else{
