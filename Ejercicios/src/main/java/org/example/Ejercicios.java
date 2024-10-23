@@ -482,7 +482,11 @@ public class Ejercicios {
         int divisor = 0;
         int reiduo = 0;
         int x = 10;
+        int z = 1;
+        int b = 1;
         int posicion = 0;
+        int posint = 0;
+        int resprue = 1;
         boolean error = true;
         while (error == true) {
             try {
@@ -496,6 +500,7 @@ public class Ejercicios {
                     posicion = i;
                     String temp = String.valueOf(isbm.charAt(i));
                     if (temp.equals("?")){
+                        posint = posicion++;
                         continue;
                     }
                     if (x == 1 && temp.equals("X")) {
@@ -507,7 +512,19 @@ public class Ejercicios {
                         x--;
                     }
                 }
-                //bulce que ponga numeros hasta que el numero que falta x 8 mas los otros sean divisores entre 11
+                while(resprue == 0){
+                   switch (posint){
+                       case 0:
+                            for (int a = 1; a < 10; a++);
+                            if (reiduo != 0) {
+                                reiduo = divisor % (b * 10);
+                                b++;
+                            }else{
+                                break;
+                            }
+
+                   }
+                }
                 reiduo = divisor % 11;
                 if (reiduo == 0){
                     System.out.println("El ISBN es valido");
