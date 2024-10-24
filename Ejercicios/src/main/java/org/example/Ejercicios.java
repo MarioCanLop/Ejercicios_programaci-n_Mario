@@ -481,10 +481,11 @@ public class Ejercicios {
         int temp2 = 0;
         int divisor = 0;
         int reiduo = 1;
+        int reiduotemp = 1;
         int x = 10;
         int z = 0;
-        int a = 1;
         int b = 10;
+        int c = 0;
         int posicion = 0;
         int posint = 0;
         int resprue = 1;
@@ -504,7 +505,7 @@ public class Ejercicios {
                         posint = posicion++;
                         continue;
                     }
-                    if (x == 1 && temp.equals("X")) {
+                    if (i == 9 && temp.equals("X")) {
                         divisor = divisor + 10;
                         x--;
                     } else {
@@ -518,14 +519,19 @@ public class Ejercicios {
                         b--;
                     }
                     do {
-                        reiduo = divisor + (a * b) % 11;
-                        a++;
-                    }while (reiduo != 0);
+                        for (int a = 1; a < 10; a++) {
+                            divisor += a * b;
+                            reiduo = divisor % 11;
+                            reiduotemp = reiduo;
+                            c = a;
+                        }
+                    }while (reiduotemp != 0);
                 }else {
                     reiduo = divisor % 11;
                 }
                 if (reiduo == 0){
                     System.out.println("El ISBN es valido");
+                    System.out.println("El numero es " + c);
                 }else{
                     System.out.println("El ISBN no es valido");
                 }
