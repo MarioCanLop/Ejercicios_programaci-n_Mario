@@ -4,6 +4,7 @@ import java.awt.*;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.InputMismatchException;
+import java.util.Random;
 import java.util.Scanner;
 
 public class Ejercicios {
@@ -481,10 +482,11 @@ public class Ejercicios {
         int temp2 = 0;
         int divisor = 0;
         int reiduo = 1;
+        int reiduotemp = 1;
         int x = 10;
         int z = 0;
-        int a = 1;
         int b = 10;
+        int c = 0;
         int posicion = 0;
         int posint = 0;
         int resprue = 1;
@@ -504,7 +506,7 @@ public class Ejercicios {
                         posint = posicion++;
                         continue;
                     }
-                    if (x == 1 && temp.equals("X")) {
+                    if (i == 9 && temp.equals("X")) {
                         divisor = divisor + 10;
                         x--;
                     } else {
@@ -518,14 +520,22 @@ public class Ejercicios {
                         b--;
                     }
                     do {
-                        reiduo = divisor + (a * b) % 11;
-                        a++;
-                    }while (reiduo != 0);
+                        for (int a = 1; a < 10; a++) {
+                            divisor += a * b;
+                            reiduo = divisor % 11;
+                            reiduotemp = reiduo;
+                            if (reiduotemp == 0){
+                                break;
+                            }
+                            c = a;
+                        }
+                    }while (reiduotemp != 0);
                 }else {
                     reiduo = divisor % 11;
                 }
                 if (reiduo == 0){
                     System.out.println("El ISBN es valido");
+                    System.out.println("El numero es " + c);
                 }else{
                     System.out.println("El ISBN no es valido");
                 }
@@ -535,6 +545,119 @@ public class Ejercicios {
                 System.out.println("Error:Te has equivocado en el caracter");
             }
         }
+
     }
+
+    public void random(){
+
+        Random aleatorio = new Random();
+
+        int numero = aleatorio.nextInt();
+        System.out.println( numero);
+
+        int numero_2 = aleatorio.nextInt(3); //de 0 a 3
+        System.out.println( numero_2);
+
+        int numero_3 = aleatorio.nextInt(899) + 100 ;  //desde 100 hasta 899
+        System.out.println( numero_3);
+
+        double numero_4 = aleatorio.nextDouble()  ;  //de 0 a 0,9999999999
+        System.out.println( numero_4);
+
+        double numero_5 = aleatorio.nextDouble()*3   ;  //de 0 a 2,9999999999
+        System.out.println( numero_5);
+        double numero_6 = aleatorio.nextDouble()*3 + 1   ;  //de 0 a 3,9999999999
+        System.out.println( numero_6);
+
+        double numero_math = Math.random(); //Lo mismo que el nextdouble pero con el math
+        System.out.println(numero_math);
+
+
+
+
+
+    }
+
+    public void Ejericio1_random(){
+        Random aleatorio = new Random();
+
+        int dado1 = aleatorio.nextInt(6) + 1;
+        int dado2 = aleatorio.nextInt(6) + 1;
+
+        System.out.println("Dado 1 " + dado1);
+        System.out.println("Dado 2 " + dado2);
+
+        System.out.println("La suma de los dos dados es: " + (dado1 + dado2)) ;
+    }
+
+    public void Ejercicio2_random(){
+        Random aleatorio = new Random();
+
+        String caracteres = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+
+        int longitud = 10;
+
+        String contrasenya = "";
+
+        for(int i =0; i<longitud; i++){
+            int random = aleatorio.nextInt(caracteres.length()) ;
+            contrasenya += caracteres.charAt(random); //+= es lo unico que funciona para esto
+
+        }
+            System.out.println("La contraseña generadas es: "+ contrasenya);
+    }
+
+    public void Ejercicio3_random(){
+        Scanner entrada = new Scanner(System.in);
+        Random aleatorio = new Random();
+        int nummax = 0;
+        int nummin = 1;
+        int nums =0;
+        int num = 0;
+        boolean error = true;
+        while (error = true){
+            try {
+                while (nummin >= nummax) {
+                    System.out.println("Dame un numero maximo");
+                    nummax = entrada.nextInt();
+                    System.out.println("Dame un numero minimo");
+                    nummin = entrada.nextInt();
+                }
+                System.out.println("Dime cunatos numeros aleatorios quieres");
+                nums = entrada.nextInt();
+                for (int i = 0; i < nums; i++){
+                    num = aleatorio.nextInt(nummax - nummin + 1) + nummin;
+                    System.out.println(num);
+                }
+               break;
+            }catch (InputMismatchException e1){
+                    System.out.println("Has introducido un caracter mal" + e1);
+                    entrada.nextLine();
+            }
+
+        }
+    }
+
+    public void Ejercicio4_random(){
+        Random aleatorio = new Random();
+
+        String caracteres = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+
+        int longitud = 8;
+
+        String contrasenya = "";
+
+        for(int i = 1; i<longitud; i++){
+            int random = aleatorio.nextInt(caracteres.length()) ;
+            contrasenya += caracteres.charAt(random); //+= es lo unico que funciona para esto
+
+        }
+        System.out.println("La contraseña generadas es: "+ contrasenya);
+    }
+    }
+
+
+
 }
+
 
