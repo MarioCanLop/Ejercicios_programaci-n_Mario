@@ -523,6 +523,9 @@ public class Ejercicios {
                             divisor += a * b;
                             reiduo = divisor % 11;
                             reiduotemp = reiduo;
+                            if (reiduotemp == 0){
+                                break;
+                            }
                             c = a;
                         }
                     }while (reiduotemp != 0);
