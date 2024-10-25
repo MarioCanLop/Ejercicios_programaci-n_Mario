@@ -655,9 +655,44 @@ public class Ejercicios {
         System.out.println("La contraseña generadas es: "+ contrasenya);
     }
 
+    public void Ejercicio1_bat1(){
+        Scanner entrada  = new Scanner(System.in);
+        String frase;
+        System.out.println("Introduce una palabra o frase");
+        frase = entrada.nextLine();
+        int mitad;
+        System.out.println("Texto Original: " + frase);
+        System.out.println("La longitud del texto es: " + frase.length());
+        System.out.println("Texto sin espacios: " + frase.replace(" ",""));
+        int longitud = frase.length();
+        if (longitud % 2 != 0) {
+            longitud++;
+            mitad = longitud / 2;
+            System.out.println("Texto dividido en 2 mitades " + frase.substring(0, mitad)+ " + " + frase.substring(mitad) );
+        }else{
+            System.out.println("Texto dividido en 2 mitades " + frase.substring(0, longitud / 2) + " + " +frase.substring(longitud / 2, longitud));
+        }
+        System.out.println("El texto en mayusculas es: "+ frase.toUpperCase());
 
+    }
 
+    public void Ejercicio2_bat1(){
+        Scanner entrada = new Scanner(System.in);
 
+        System.out.println("Dime la primera frase:");
+        String frase1 = entrada.nextLine();
+        System.out.println("Dime la segunda frase");
+        String frase2 = entrada.nextLine();
+        int long1 = frase1.length();
+        int long2 = frase2.length();
+        if (long1 > long2){
+            System.out.println("La primera frase `" + frase1 + "` es mas larga que la segunda `" + frase2 + "`");
+        }else {
+            System.out.println("La segunda frase `" + frase2 + "` es mas larga que la primera `" + frase1 + "`");
+        }
+    }
+
+    public void Ejercicio3_bat1(){}
 }
 
 

@@ -9,6 +9,6 @@ public class Main {
     public static void main(String[] args) {
 
         Ejercicios ejercicio = new Ejercicios();
-        ejercicio.Ejercicio4_random();
+        ejercicio.Ejercicio2_bat1();
     }
 }
