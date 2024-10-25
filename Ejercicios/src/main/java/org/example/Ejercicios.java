@@ -643,18 +643,18 @@ public class Ejercicios {
 
         String caracteres = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
 
-        int longitud = 8;
+        int longitud = aleatorio.nextInt(3) + 6;
 
         String contrasenya = "";
 
-        for(int i = 1; i<longitud; i++){
+        for(int i = 0; i<longitud; i++){
             int random = aleatorio.nextInt(caracteres.length()) ;
             contrasenya += caracteres.charAt(random); //+= es lo unico que funciona para esto
 
         }
         System.out.println("La contraseña generadas es: "+ contrasenya);
     }
-    }
+
 
 
 
