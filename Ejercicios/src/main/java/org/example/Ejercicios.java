@@ -239,22 +239,23 @@ public class Ejercicios {
         int char2 = 0;
         int char3 = 0;
         int char4 = 0;
+        String fecha = "";
         boolean error = true;
         while (error == true) {
-            System.out.println("Dime tu fecha de nacimiento (dd/mm/aaaa)"); //Pido la fehca
-            String fecha = entrada.nextLine(); //La guardo
-            if (fecha.length() != 10 || fecha.charAt(2) != '/' || fecha.charAt(5) != '/') { //Compruebo que tenga 10 de largo y que compruebe que las barras estan en los caracteres que deben estar
-                System.out.println("Dime tu fecha de nacimiento (dd/mm/aaaa)"); //Pido otra vez la fecha si algo falla
-                fecha = entrada.nextLine(); // La guardo de vuelta
-            }
-            String dia_str = fecha.substring(0, 2); //Separamos el dia
-            String mes_str = fecha.substring(3, 5); //Separamos el mes
-            String ano_str = fecha.substring(6, 10); //Separamos el año
             try {
-                dia = Integer.parseInt(dia_str); // Los convertimos en variable int
-                mes = Integer.parseInt(mes_str); // Los convertimos en variable int
-                ano = Integer.parseInt(ano_str); // Los convertimos en variable int
-                error = false;
+                while (dia <= 0 || mes <= 0 || ano <= 0) {
+                    while (fecha.length() != 10 || fecha.charAt(2) != '/' || fecha.charAt(5) != '/') { //Compruebo que tenga 10 de largo y que compruebe que las barras estan en los caracteres que deben estar
+                        System.out.println("Dime tu fecha de nacimiento (dd/mm/aaaa)"); //Pido otra vez la fecha si algo falla
+                        fecha = entrada.nextLine(); // La guardo de vuelta
+                        String dia_str = fecha.substring(0, 2); //Separamos el dia
+                        String mes_str = fecha.substring(3, 5); //Separamos el mes
+                        String ano_str = fecha.substring(6, 10); //Separamos el año
+                        dia = Integer.parseInt(dia_str); // Los convertimos en variable int
+                        mes = Integer.parseInt(mes_str); // Los convertimos en variable int
+                        ano = Integer.parseInt(ano_str); // Los convertimos en variable int
+                        error = false;
+                    }
+                }
             }catch (NumberFormatException e1) { //El error de introducir una letra
                 System.out.println("Erro: Introduce numero");
 
