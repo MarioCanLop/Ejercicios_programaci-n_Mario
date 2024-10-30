@@ -83,9 +83,11 @@ public class Repaso {
                         mes = mes * 2;
 
                         System.out.println("Mes " + i + ": " + mes);
+
                     }
                 }
                 System.out.println("Total a pagar " + res);
+                break;
             } catch (InputMismatchException e1) {
                 System.out.println("Error de caracater");
                 entrada.nextLine();
@@ -93,6 +95,7 @@ public class Repaso {
             }
         }
     }
+
     public void repaso4 () {
             Scanner entrada = new Scanner(System.in);
             boolean error = true;

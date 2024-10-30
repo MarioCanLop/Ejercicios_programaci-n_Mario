@@ -582,7 +582,7 @@ public class Ejercicios {
     public void Ejericio1_random(){
         Random aleatorio = new Random();
 
-        int dado1 = aleatorio.nextInt(6) + 1;
+        int dado1 = aleatorio.nextInt(6) + 1; //pasa de 0 a 5 a 1 a 6
         int dado2 = aleatorio.nextInt(6) + 1;
 
         System.out.println("Dado 1 " + dado1);
@@ -601,8 +601,9 @@ public class Ejercicios {
         String contrasenya = "";
 
         for(int i =0; i<longitud; i++){
-            int random = aleatorio.nextInt(caracteres.length()) ;
+            int random = aleatorio.nextInt(caracteres.length()); //escoge una cantidad de caracteres random entre todo el length
             contrasenya += caracteres.charAt(random); //+= es lo unico que funciona para esto
+            //devuelve el caracter concreto que especifica random
 
         }
             System.out.println("La contraseña generadas es: "+ contrasenya);
@@ -627,7 +628,7 @@ public class Ejercicios {
                 System.out.println("Dime cunatos numeros aleatorios quieres");
                 nums = entrada.nextInt();
                 for (int i = 0; i < nums; i++){
-                    num = aleatorio.nextInt(nummax - nummin + 1) + nummin;
+                    num = aleatorio.nextInt(nummax - nummin + 1) + nummin; // delimitar el rango en el que están
                     System.out.println(num);
                 }
                break;
@@ -644,7 +645,7 @@ public class Ejercicios {
 
         String caracteres = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
 
-        int longitud = aleatorio.nextInt(3) + 6;
+        int longitud = aleatorio.nextInt(3) + 6; //entre 6 y 8
 
         String contrasenya = "";
 
@@ -694,6 +695,8 @@ public class Ejercicios {
     }
 
     public void Ejercicio3_bat1(){}
+
+    
 }
 
 
