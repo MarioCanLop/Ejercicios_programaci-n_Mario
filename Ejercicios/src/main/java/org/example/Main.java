@@ -9,15 +9,15 @@ import java.util.Scanner;
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 //public class Main {
     //public static void main(String[] args) {
-public class  Main{
-    public static void main (String[] args){
-        Ejercicios ejercicio = new Ejercicios();
-        ejercicio.practicatm2_1();
-    }
-}
-//public class Main {
-    //public static void main(String[] args){
-        //Repaso repaso = new Repaso();
-        //repaso.repaso3();
+//public class  Main{
+    //public static void main (String[] args){
+        //Ejercicios ejercicio = new Ejercicios();
+        //ejercicio.practicatm2_1();
     //}
 //}
+public class Main{
+    public static void main (String[]args){
+        Tema_3 tema_3 = new Tema_3();
+        tema_3.Ejercicio4_bat1();
+    }
+}
