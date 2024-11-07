@@ -1,6 +1,8 @@
 package org.example;
 
 import javax.xml.transform.Source;
+import java.util.Arrays;
+import java.util.InputMismatchException;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -103,9 +105,58 @@ public class Tema_3 {
                 System.out.print(" " + array_2[b] +" ");
                 b++;
             }
-
         }
 
     }
 
+    public void Ejercicio5_bat1(){
+        int numeros [] = {3,5,2,1,4};
+        int ultpos = numeros[numeros.length -1];
+
+        for (int i = numeros.length -1; i >= 0; i--){
+            if (i == 0){
+                numeros[i] = ultpos;
+            }else {
+                numeros[i] = numeros[i-1];
+            }
+        }
+        for ( int i = 0; i< numeros.length; i++){
+            System.out.print(" " + numeros[i] + " ");
+        }
+    }
+
+    public void Ejercicio6_bat1(){
+        Scanner entrada = new Scanner(System.in);
+        String temp ="" ;
+        int numtemp = 0;
+        String temp2 = "";
+        String nums[] = new String[6];
+        boolean error = true;
+        while (error == true) {
+            try {
+                System.out.println("Introduce 5 numeros");
+
+                
+                for (int i = 0; i < nums.length() - 1; i++) {
+                    numtemp = nums[i];
+                    temp = Integer.toString(numtemp);
+
+                }
+                for (int i = nums.length() - 1; i >= 0; i++) {
+                    numtemp = nums[i];
+                    temp2 = Integer.toString(numtemp);
+                }
+                if (temp.equals(temp2)) {
+                    System.out.println("Es simetrico: Si");
+                } else {
+                    System.out.println("Es simetrico: No");
+                }
+            }catch (InputMismatchException e1){
+                System.out.println("Caracter erroneo");
+                entrada.nextLine();
+            }catch (ArrayIndexOutOfBoundsException e2){
+                System.out.println("Has puesto numeros de mas");
+            }
+        }
+    }
 }
