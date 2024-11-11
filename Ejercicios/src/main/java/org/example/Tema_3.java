@@ -137,13 +137,13 @@ public class Tema_3 {
                 System.out.println("Introduce 5 numeros");
 
                 
-                for (int i = 0; i < nums.length() - 1; i++) {
-                    numtemp = nums[i];
+                for (int i = 0; i < nums.length - 1; i++) {
+
                     temp = Integer.toString(numtemp);
 
                 }
-                for (int i = nums.length() - 1; i >= 0; i++) {
-                    numtemp = nums[i];
+                for (int i = nums.length - 1; i >= 0; i++) {
+
                     temp2 = Integer.toString(numtemp);
                 }
                 if (temp.equals(temp2)) {
@@ -156,6 +156,127 @@ public class Tema_3 {
                 entrada.nextLine();
             }catch (ArrayIndexOutOfBoundsException e2){
                 System.out.println("Has puesto numeros de mas");
+            }
+        }
+    }
+
+    public void Ejercicio_Samurai(){//Guia no se puede usar asi tienes que hacerlo con split guiate con este
+        Scanner entrada = new Scanner(System.in);
+        int samuray1 [] = new int[7];
+        int samuray2 [] = new int[7];
+        int result1 = 0;
+        int result2 = 0;
+        int equipo_1 = 0;
+        int equipo_2 = 0;
+        Random aleatorio = new Random();
+        boolean error = true;
+        while (error = true) {
+            try {
+                while (result1 < 30) {
+                    System.out.println("Introduce la potencia de los samurais: ");
+                    for (int i = 0; i < samuray1.length; i++) {
+                        samuray1[i] = entrada.nextInt();
+                        result1 = samuray1[i];
+                    }
+                    if (result1 < 30) {
+                        System.out.println("ERROR: La potencia total no suma 30.");
+                        continue;
+                    }
+                }
+                while (result2 < 30) {
+                    System.out.println("Introduce la potencia de los samurais: ");
+                    for (int i = 0; i < samuray2.length; i++) {
+                        samuray2[i] = entrada.nextInt();
+                        result2 = samuray2[i];
+                    }
+                    if (result2 < 30) {
+                        System.out.println("ERROR: La potencia total no suma 30.");
+                        continue;
+
+
+                    }
+                }
+                    int comienzo = aleatorio.nextInt(8);
+                    System.out.println(comienzo);
+                    for (int i = comienzo; i < samuray1.length; i++){
+                        if (samuray1[i] > samuray2[i]){
+                            System.out.println("Samurai" + i + " Gana Equipo 1" + samuray1[i] + samuray2[i]);
+                            equipo_1++;
+                        } else if (samuray1[i] == samuray2[i]) {
+                            System.out.println("Samurai "+ i+ " Empate " + samuray1[i] + " "+ samuray2[i] );
+                            continue;
+                        } else  {
+                            System.out.println("Samurai " + i + " Gana Equipo 2 " + samuray1[i] + " "+ samuray2[i]);
+                            equipo_2++;
+                        }
+                        if (equipo_1 > 4){
+                            System.out.println("!Equipo 1 gana! Equipo 2 ha tenido " + equipo_1 + "bajas");
+                            break;
+                        } else if (equipo_2 > 4){
+                            System.out.println("!Equipo 2 gana! Equipo 1 ha tenido " + equipo_1 + "bajas");
+                            break;
+                        }
+                    }
+                    int antes = comienzo - samuray2.length;
+                    for (int i = 0; i < antes; i++){
+                        if (equipo_1 > 4){
+                            System.out.println("!Equipo 1 gana! Equipo 2 ha tenido " + equipo_1 + "bajas");
+                            break;
+                        } else if (equipo_2 > 4){
+                            System.out.println("!Equipo 2 gana! Equipo 1 ha tenido " + equipo_1 + "bajas");
+                            break;
+                        }
+                        if (samuray1[i] > samuray2[i]){
+                            System.out.println("Samurai " + i + " Gana Equipo 1 " + samuray1[i] + " "+ samuray2[i]);
+                            equipo_1++;
+                        } else if (samuray1[i] == samuray2[i]) {
+                            System.out.println("Samurai "+ i+ " Empate " + samuray1[i] + " "+ samuray2[i] );
+                            continue;
+                        }else {
+                            System.out.println("Samurai " + i + " Gana Equipo 2 " + samuray1[i] + " "+ samuray2[i]);
+                            equipo_2++;
+                        }
+
+                    }
+                    break;
+
+            }catch (InputMismatchException e1){
+                System.out.println("Error de caracteres ");
+                entrada.nextLine();
+            }
+        }
+    }
+
+    public void Ejercicio_Samurai_bien(){
+        Scanner entrada = new Scanner(System.in);
+        Random aleatorio = new Random();
+        String samurai1;
+        String samurai2;
+        int result1 = 0;
+        int result2= 0;
+        int equipo1 = 0;
+        int equipo2 = 0;
+        int comiezo = 0;
+        int antes = 0;
+        boolean error = true;
+        while (error == true){
+            try {
+
+                    System.out.println("Introduce las potencias de los samurais del equipo 1 : ");
+                    samurai1 = entrada.next();
+                    String[] samurai1_1 = samurai1.split(" ");
+
+                    System.out.println("Introduce las potencias de los samurais del equipo 2: ");
+                    samurai2 = entrada.next();
+                    String[] samurai2_1 = samurai1.split(" ");
+                for (int i = 0; i < samurai1.length(); i++){
+                    System.out.println("Equipo 1 " + samurai1);
+                    System.out.println("Equipo 2" + samurai2 );
+                }
+
+            }catch (InputMismatchException e1){
+                System.out.println("Error de caracter" + e1);
+                entrada.nextLine();
             }
         }
     }
