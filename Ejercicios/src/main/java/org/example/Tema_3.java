@@ -327,7 +327,7 @@ public class Tema_3 {
                             int compar1 = Integer.parseInt(samurai1_1[i]);
                             int compar2 = Integer.parseInt(samurai2_1[i]);
                             int comparar = compar1 - compar2;
-                            System.out.println(comparar);
+
                             if (comparar > 0) {
                                 System.out.println("Samurai " + imostrar + ". Gana Equipo 1. " + samurai1_1[i] + " vs " + samurai2_1[i]);
                                 equipo1++;
@@ -350,7 +350,7 @@ public class Tema_3 {
 
             }catch (NumberFormatException e1){
                 System.out.println("Error de caracter" + e1);
-                entrada.nextLine();
+
             }
         }while (true);
     }
