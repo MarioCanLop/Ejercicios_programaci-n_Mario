@@ -354,4 +354,92 @@ public class Tema_3 {
             }
         }while (true);
     }
+
+    public void Ejercicio_navidad (){
+        Scanner entrada = new Scanner(System.in);
+        String navidad = "NAVIDAD";
+
+        String[] letras = navidad.split("");
+
+
+
+        System.out.println("Introduce cuantas letras quieres en la palabra NAVIDAD");
+        String cantidad = entrada.nextLine();
+        String[] cantidad_1 = cantidad.split(" ");
+        System.out.println(Arrays.toString(letras));
+        System.out.println(Arrays.toString(cantidad_1));
+        for (int i = 0; i< letras.length; i++){
+            int z = Integer.parseInt(cantidad_1[i]);
+            for (int b = 0; b < z; b++ ){
+                System.out.print(letras[i]);
+            }
+        }
+    }
+
+    public void Ejercicio_buscar(){
+        String colores []= {"amarillo","azul", "rojo", "naranja"};
+        String color = "negro";
+
+        boolean exsisite = Arrays.asList(colores).contains(color);
+
+        if (exsisite){
+            System.out.print("El color " + color +" exisiste en el vector");
+        }else{
+            System.out.print("El color " + color +" no exisiste en el vector");
+        }
+    }
+
+    public void Ejercicio_rule(){
+        Scanner entrada = new Scanner(System.in);
+        Random aleatorio = new Random();
+        String colores [] = {"rojo", "negro"};
+
+        Integer numeros [] = new Integer[37];
+        String color = "" ;
+        for (int i =0; i<numeros.length;i++){
+            numeros[i] = i;
+        }
+
+        String pares [] = {"par", "impar"};
+        String par = "";
+        System.out.println("Numero (0-36): ");
+        int numero = entrada.nextInt();
+
+        boolean numero_existe = Arrays.asList(numeros).contains(numero);
+
+        if (numero_existe){
+            System.out.println("Error el numero no es valido.");
+            return;
+        }else {
+            if (numero != 0) {
+                System.out.println("Introduce un color (rojo,negro)");
+                color = entrada.next();
+
+                boolean color_existe = Arrays.asList(colores).contains(color);
+                if (color_existe){
+                    System.out.println("Error el  color no es valido.");
+                    return;
+                }else {
+                    System.out.println("Introduce (par o impar) ");
+                    par = entrada.next();
+
+
+                    boolean par_existe = Arrays.asList(pares).contains(par);
+                    if (par_existe){
+                        System.out.println("Error el  par o impar no es valido.");
+                    }
+                }
+            }
+        }
+        int numero_sorteo = numeros[aleatorio.nextInt(37)];
+
+        String color_sorteo = colores[aleatorio.nextInt(2)];
+        String pares_sorteo = "";
+        if (numero_sorteo % 2 == 0){
+            pares_sorteo = "par";
+        }else {
+            pares_sorteo = "impar";
+        }
+
+    }
 }
