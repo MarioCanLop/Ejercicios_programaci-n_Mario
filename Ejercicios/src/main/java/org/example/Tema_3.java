@@ -252,32 +252,106 @@ public class Tema_3 {
         Random aleatorio = new Random();
         String samurai1;
         String samurai2;
+        String []samurai1_1 = new String[7];
+        String []samurai2_1 = new String[7];
+        int suma1 = 0;
+        int suma2 = 0;
         int result1 = 0;
         int result2= 0;
         int equipo1 = 0;
         int equipo2 = 0;
         int comiezo = 0;
         int antes = 0;
-        boolean error = true;
-        while (error == true){
+        do {
             try {
+                    do {
+                        System.out.println("Introduce las potencias de los samurais del equipo 1 : ");
+                        samurai1 = entrada.nextLine();
+                        samurai1_1 = samurai1.split(" ");
+                        for (int i = 0; i< samurai1_1.length ; i++){
+                            suma1 += Integer.parseInt(samurai1_1[i]);
+                        }
+                        if (suma1 < 30) {
+                            System.out.println("Error.La potencia total no suma 30.");
+                        }else{
+                            System.out.println("Equipo Completado");
+                        }
 
-                    System.out.println("Introduce las potencias de los samurais del equipo 1 : ");
-                    samurai1 = entrada.next();
-                    String[] samurai1_1 = samurai1.split(" ");
+                    }while (suma1 < 30);
+                    do {
+                        System.out.println("Introduce las potencias de los samurais del equipo 2: ");
+                        samurai2 = entrada.nextLine();
+                        samurai2_1 = samurai2.split(" ");
+                        for (int i = 0; i< samurai2_1.length ; i++){
+                            suma2 += Integer.parseInt(samurai2_1[i]);
+                        }
+                        if (suma2 < 30){
+                            System.out.println("Error.La potencia total no suma 30.");
+                        }else{
+                            System.out.println("Equipo Completado");
+                        }
+                    }while (suma2 < 30);
+                    System.out.println("¡Empieza la batalla!");
+                    comiezo = aleatorio.nextInt(7);
+                    int comienzo = comiezo + 1;
+                    System.out.println("La batalla inicia con el Samurai " + comienzo );
+                    antes = (7 - comiezo) -1 ;
+                    for (int i = comiezo; i < 7; i++){
+                        int compar1 = Integer.parseInt(samurai1_1[i]);
+                        int compar2 = Integer.parseInt(samurai2_1[i]);
+                        int comparar = compar1 - compar2;
+                        int imostrar = i + 1 ;
+                        if (comparar > 0){
+                            System.out.println("Samurai " + imostrar + ". Gana Equipo 1. " + samurai1_1[i]+ " vs " + samurai2_1[i]);
+                            equipo1++;
+                        } else if (comparar == 0){
+                            System.out.println("Samurai " + imostrar + ". Emapte. " + samurai1_1[i]+ " vs " + samurai2_1[i]);
+                        }else{
+                            System.out.println("Samurai " + imostrar + ". Gana Equipo 2. " + samurai1_1[i]+ " vs " + samurai2_1[i]);
+                            equipo2++;
+                        }
+                        if (equipo1 >= 4){
+                            break;
+                        } else if (equipo2 >= 4) {
+                            break;
+                        }
+                    }
+                    if (antes < 7) {
+                        for (int i = antes; i < comiezo; i++) {
+                            if (equipo1 >= 4) {
+                                break;
+                            } else if (equipo2 >= 4) {
+                                break;
+                            }
+                            int imostrar = i + 1 ;
+                            int compar1 = Integer.parseInt(samurai1_1[i]);
+                            int compar2 = Integer.parseInt(samurai2_1[i]);
+                            int comparar = compar1 - compar2;
+                            System.out.println(comparar);
+                            if (comparar > 0) {
+                                System.out.println("Samurai " + imostrar + ". Gana Equipo 1. " + samurai1_1[i] + " vs " + samurai2_1[i]);
+                                equipo1++;
+                            } else if (comparar == 0) {
+                                System.out.println("Samurai " + imostrar + ". Emapte. " + samurai1_1[i] + " vs " + samurai2_1[i]);
+                            } else {
+                                System.out.println("Samurai " + imostrar + ". Gana Equipo 2. " + samurai1_1[i] + " vs " + samurai2_1[i]);
+                                equipo2++;
+                            }
+                        }
+                    }
+                    if (equipo1 > equipo2){
+                        System.out.println("Equipo 1 Ha ganado con " + equipo1 + " samurais derrotados al equipo 2");
+                    } else if (equipo1 < equipo2) {
+                        System.out.println("Equipo 2 Ha ganado con " + equipo2 + " samurais derrotados al equipo 1");
+                    }else {
+                        System.out.println("Ha habido un empate");
+                    }
+                    break;
 
-                    System.out.println("Introduce las potencias de los samurais del equipo 2: ");
-                    samurai2 = entrada.next();
-                    String[] samurai2_1 = samurai1.split(" ");
-                for (int i = 0; i < samurai1.length(); i++){
-                    System.out.println("Equipo 1 " + samurai1);
-                    System.out.println("Equipo 2" + samurai2 );
-                }
-
-            }catch (InputMismatchException e1){
+            }catch (NumberFormatException e1){
                 System.out.println("Error de caracter" + e1);
                 entrada.nextLine();
             }
-        }
+        }while (true);
     }
 }
