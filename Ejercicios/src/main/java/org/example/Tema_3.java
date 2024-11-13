@@ -407,7 +407,7 @@ public class Tema_3 {
 
         boolean numero_existe = Arrays.asList(numeros).contains(numero);
 
-        if (numero_existe){
+        if (!numero_existe){
             System.out.println("Error el numero no es valido.");
             return;
         }else {
@@ -416,7 +416,7 @@ public class Tema_3 {
                 color = entrada.next();
 
                 boolean color_existe = Arrays.asList(colores).contains(color);
-                if (color_existe){
+                if (!color_existe){
                     System.out.println("Error el  color no es valido.");
                     return;
                 }else {
@@ -425,7 +425,7 @@ public class Tema_3 {
 
 
                     boolean par_existe = Arrays.asList(pares).contains(par);
-                    if (par_existe){
+                    if (!par_existe){
                         System.out.println("Error el  par o impar no es valido.");
                     }
                 }
@@ -440,6 +440,21 @@ public class Tema_3 {
         }else {
             pares_sorteo = "impar";
         }
+        System.out.println("Ha tocado" + numero_sorteo + " " +color_sorteo + " " + pares_sorteo);
 
+
+        if (numero != 0 && numero_sorteo==numero && color_sorteo.equals(color) && pares_sorteo.equals(par)){
+            System.out.println("HAS GANADO !!!");
+        } else if (numero != 0 && color_sorteo.equals(color)) {
+            System.out.println("Has acertado el color");
+        }else if (numero != 0 && pares_sorteo.equals(par)) {
+            System.out.println("Has acertado la opción par/impar");
+        } else if (numero == numero_sorteo && numero != 0) {
+           System.out.println("Has acertado el número");
+        } else if (numero == 0 && numero_sorteo == 0) {
+            System.out.println("Has Ganado");
+        }else {
+            System.out.println("Has perdido");
+        }
     }
 }
