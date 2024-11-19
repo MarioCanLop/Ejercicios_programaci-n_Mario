@@ -457,4 +457,171 @@ public class Tema_3 {
             System.out.println("Has perdido");
         }
     }
+
+    public void exposicion (){
+        int array[] = {8, 3, 5, 9, 1};
+
+        for (int i = 0; i < array.length - 1; i++) {
+            for (int j = i + 1; j < array.length; j++) {
+                if (array[j] > array[i]) {  // Cambiamos la condición para que sea de mayor a menor
+                    int aux = array[j];
+                    array[j] = array[i];
+                    array[i] = aux;
+                }
+            }
+        }
+
+        for (int i = 0; i < array.length; i++) {
+            System.out.println(array[i]);
+        }
+
+    }
+
+    public void sort (){
+        int numeros[] = {6,3,5,24,12};
+        System.out.println(Arrays.toString(numeros));
+
+        Arrays.sort(numeros);
+
+        System.out.println(Arrays.toString(numeros));
+
+        int num = 24;
+        
+        int posicion = Arrays.binarySearch(numeros,num);
+
+        System.out.println(posicion);
+    }
+
+    public void duplicados(){
+        int original [] = {3,3,5,10,16,25,25};
+        int auxiliar [] = new int[original.length];
+        int tamanyo = 0;
+        for (int i = 0; i < original.length;i++){
+            if (i != original.length-1 && original[i]==original[i + 1]){
+                System.out.println("duplicado: " + original[i]);
+            }else{
+                auxiliar[i]= original[i];
+                tamanyo++;
+            }
+        }
+        System.out.println(Arrays.toString(auxiliar));
+
+        int limpio[] = new int[tamanyo];
+        int pos = 0;
+        int resta = 0;
+        for (int i = 0;i< auxiliar.length; i++){
+
+            if (auxiliar[i] != 0){
+                limpio[i - resta]=auxiliar[i];
+                pos ++;
+            }else{
+                resta++;
+            }
+        }
+        System.out.println(Arrays.toString(limpio));
+
+
+    }
+
+    public void duplicods3(){
+        Random aleatorio = new Random();
+        int original [] = {3,3,5,10,16,25,25};
+        int auxiliar [] = new int[original.length];
+        int tamanyo = 0;
+
+        boolean repetir =true;
+        while (repetir) {
+            repetir = false;
+            for (int i = 0; i < original.length; i++) {
+                if (i != original.length - 1 && original[i] == original[i + 1]) {
+                    System.out.println("duplicado: " + original[i]);
+                    original[i] = aleatorio.nextInt(49) + 1;
+                    repetir = true;
+
+                }
+            }
+            Arrays.sort(original);
+        }
+        System.out.println(Arrays.toString(auxiliar));
+
+        int limpio[] = new int[tamanyo];
+        int pos = 0;
+        int resta = 0;
+        for (int i = 0;i< auxiliar.length; i++){
+
+            if (auxiliar[i] != 0){
+                limpio[i - resta]=auxiliar[i];
+                pos ++;
+            }else{
+                resta++;
+            }
+        }
+        System.out.println(Arrays.toString(limpio));
+
+    }
+
+    public void duplicados_facil(){
+        int original [] = {3,3,5,10,16,25,25};
+
+        System.out.println(Arrays.toString(original));
+
+
+        int vector[] = Arrays.stream(original).distinct().toArray();
+        System.out.println(Arrays.toString(vector));
+
+    }
+
+    public void Primitiva(){
+        Scanner entrada = new Scanner(System.in);
+        Random aleatorio = new Random();
+        String boleto_normal = "";
+        String boleto [] = new String[7];
+        int sorteo[] = new int [6];
+        boolean formato;
+        boolean pasa = false;
+        int confirm = 0;
+        do {
+            try {
+                do {
+                    System.out.println("Introduce los datos de tu boleto");
+                    System.out.println("X-X-X-X-X-X/X");
+                    boleto_normal = entrada.nextLine();
+                    formato = boleto_normal.matches("([0-4][0-9])-([0-4][0-9])-([0-4][0-9])-([0-4][0-9])-([0-4][0-9])-([0-4][0-9])/[0-9]");
+                    boleto = boleto_normal.split("[-/]");
+                    System.out.println(Arrays.toString(boleto));
+                    for (int i = 0; i<boleto.length -1 ;i++){
+                        for (int j = 1; j < boleto.length -1; i++){
+                            if (i != 0){
+                                if (boleto [i] == boleto[j]){
+                                    confirm = 1;
+                                    break;
+                                }
+                            }
+                        }
+
+                    }
+                    if (confirm == 1){
+                        System.out.println("No se puede repetir numero");
+                    } else {
+                        pasa = true;
+                    }
+                }while (formato == false || pasa == true);
+                boleto = boleto_normal.split("[-/]");
+                System.out.println(Arrays.toString(boleto));
+                for (int i = 0; i < sorteo.length -1; i++){
+                    sorteo[i] = aleatorio.nextInt(50);;
+                    if (i != 0){
+                        if (sorteo [i] == sorteo[i -1]){
+                            sorteo[i] = aleatorio.nextInt(50);
+                        }
+                    }
+                }
+                System.out.println(Arrays.toString(sorteo));
+
+
+            }catch (InputMismatchException e1){
+                System.out.println("Error al introducir carcateres");
+            }
+        }while (true);
+    }
 }
