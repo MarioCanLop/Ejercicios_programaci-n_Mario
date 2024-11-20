@@ -653,4 +653,97 @@ public class Tema_3 {
             }
         }while (true);
     }
+
+    public void triangulo_2(){
+        Scanner teclado = new Scanner(System.in);
+        int altura = teclado.nextInt();
+
+        for(int i=altura;i>=1;i--){
+            for(int j=altura;j>=i;j--){
+
+                System.out.print("*");
+
+            }
+            System.out.println("");
+        }
+
+        for (int i = 0; i <=altura ; i++) {
+            for (int j = 0; j <i ; j++) {
+                System.out.print("*");
+            }
+            System.out.println("");
+        }
+
+    }
+
+    public void tablas(){
+        System.out.println("TABLAS DE MULTIPLICAR!!!");
+
+        for (int i = 1; i <=10 ; i++) {
+            System.out.println("TABLA DEL " + i);
+            for (int j = 1; j <=10 ; j++) {
+
+                System.out.println(i + "x" + j + "=" + i*j);
+
+            }
+
+        }
+
+    }
+
+    public void matrices(){
+        Scanner entrada = new Scanner(System.in);
+        int matriz[][] = new int[3][3];
+
+        for (int i = 0; i< matriz.length;i++){
+            for (int j = 0; j<matriz[i].length;j++){
+                System.out.print(matriz[i][j] + " ");
+            }
+            System.out.print("\n");
+        }
+        int matriz2[][]= {{2,3,4,1},{5,10,22,6}};
+
+        for (int[] fila : matriz2){
+
+            System.out.println(Arrays.toString(fila));
+
+        }
+
+        int matriz3[][] = new int[3][3];
+
+        for (int i = 0; i<matriz3.length;i++){
+            for (int j = 0; j<matriz3[i].length;j++){
+                System.out.println("Introduce la posición (" + i + "," + j+ ")" );
+                matriz3[i][j]=entrada.nextInt();
+            }
+        }
+        for (int i = 0; i< matriz3.length;i++){
+            for (int j = 0; j<matriz3[i].length;j++){
+                System.out.print(matriz3[i][j] + " ");
+            }
+            System.out.print("\n");
+        }
+    }
+
+    public void matrices2(){
+        int m[][] = new int[3][3];
+
+        for (int i = 0; i<m.length;i++){
+            for (int j = 0; j<m[i].length;j++){
+                if (i==j){
+                    m[i][j]= 1;
+                }
+            }
+        }
+        for (int i = 0; i<m.length;i++){
+            for (int j = 0; j<m[i].length;j++){
+                if (m[i][j] == 1){
+                    System.out.print("x ");
+                }else {
+                    System.out.print("- ");
+                }
+            }
+            System.out.println("");
+        }
+    }
 }
