@@ -587,10 +587,10 @@ public class Tema_3 {
                     System.out.println("Introduce los datos de tu boleto");
                     System.out.println("X-X-X-X-X-X/X");
                     boleto_normal = entrada.nextLine();
-                    formato = boleto_normal.matches("([1-4]?[0-9])-([0-4]?[0-9])-([0-4]?[0-9])-([0-4]?[0-9])-([0-4]?[0-9])-([0-4]?[0-9])/[0-9]");
-                    boleto = boleto_normal.split("[-/]");
+                    formato = boleto_normal.matches("([1-4]?[0-9])-([0-4]?[0-9])-([0-4]?[0-9])-([0-4]?[0-9])-([0-4]?[0-9])-([0-4]?[0-9])/[0-9]"); //Comprobamos que el usuario lo introduce de la manera correcta
+                    boleto = boleto_normal.split("[-/]"); // lo pasamos al array
                     System.out.println(Arrays.toString(boleto));
-                    for (int i = 0; i<boleto.length -1 ;i++){
+                    for (int i = 0; i<boleto.length -1 ;i++){//con estos for comoprobamos si hay numeros iguales si lo hay confirm = 1
                         for (int j = 0; j < i  ; j++){
                                 if (boleto [i].equals(boleto[j])){
                                     confirm = 1;
@@ -602,12 +602,12 @@ public class Tema_3 {
                         }
 
                     }
-                }while (formato == false || confirm == 1);
-                for (int i = 0; i < sorteo.length -1; i++) {
+                }while (formato == false || confirm == 1); //si el formato esta mal o hay un numero repetido vuelve al principio del bucle
+                for (int i = 0; i < sorteo.length -1; i++) {//creamos el numero del sorteo
                     sorteo[i] = aleatorio.nextInt(50);
                 }
 
-                for (int i = 0; i<sorteo.length -1 ;i++) {
+                for (int i = 0; i<sorteo.length -1 ;i++) {//si hay algun numero repetido lo cambia para que no se repitan
                     for (int j = 0; j < i; j++) {
                         while (sorteo[i] == sorteo[j]) {
                             sorteo[i] = aleatorio.nextInt(50);
@@ -615,12 +615,12 @@ public class Tema_3 {
                     }
 
                 }
-                int complement = aleatorio.nextInt(50);
-                int reint = aleatorio.nextInt(10);
+                int complement = aleatorio.nextInt(50);//damos un valor random de 0-49
+                int reint = aleatorio.nextInt(10); //damos un valor random de 0-9
                 System.out.println("HA SALIDO: ");
                 System.out.println(Arrays.toString(sorteo));
                 for (int i = 0;i<sorteo.length -1 ;i++){
-                    if (complement == sorteo[i]){
+                    while (complement == sorteo[i]){//si el complemento es igual al del sorteo lo cambia
                         complement = aleatorio.nextInt(50);
                     }
                 }
@@ -629,7 +629,7 @@ public class Tema_3 {
                 int acierto = 0;
                 int opcion_com = 0;
 
-                for (int i = 0;i<6;i++){
+                for (int i = 0;i<6;i++){//si son iguales algunos de los numeros del usuario  suma 1 a acierto
                     int numeroBoleto = Integer.parseInt(boleto[i]);
                     for (int j = 0; j < 6;j++ )
                     if (numeroBoleto == sorteo[j]){
@@ -638,7 +638,7 @@ public class Tema_3 {
                         opcion_com = 1;
                     }
                 }
-                System.out.println("RESULTADOS: ");
+                System.out.println("RESULTADOS: ");//muestra si ha acertado alguna de las 3 opciones
                 System.out.println(acierto + " aciertos");
                 if (opcion_com == 1){
                     System.out.println("Complementario");
