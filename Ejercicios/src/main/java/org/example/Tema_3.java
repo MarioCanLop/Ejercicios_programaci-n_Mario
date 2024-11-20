@@ -583,42 +583,71 @@ public class Tema_3 {
         do {
             try {
                 do {
+                    confirm = 0;
                     System.out.println("Introduce los datos de tu boleto");
                     System.out.println("X-X-X-X-X-X/X");
                     boleto_normal = entrada.nextLine();
-                    formato = boleto_normal.matches("([0-4][0-9])-([0-4][0-9])-([0-4][0-9])-([0-4][0-9])-([0-4][0-9])-([0-4][0-9])/[0-9]");
+                    formato = boleto_normal.matches("([1-4]?[0-9])-([0-4]?[0-9])-([0-4]?[0-9])-([0-4]?[0-9])-([0-4]?[0-9])-([0-4]?[0-9])/[0-9]");
                     boleto = boleto_normal.split("[-/]");
                     System.out.println(Arrays.toString(boleto));
                     for (int i = 0; i<boleto.length -1 ;i++){
-                        for (int j = 1; j < boleto.length -1; i++){
-                            if (i != 0){
-                                if (boleto [i] == boleto[j]){
+                        for (int j = 0; j < i  ; j++){
+                                if (boleto [i].equals(boleto[j])){
                                     confirm = 1;
                                     break;
                                 }
-                            }
+                        }
+                        if (confirm == 1){
+                            break;
                         }
 
                     }
-                    if (confirm == 1){
-                        System.out.println("No se puede repetir numero");
-                    } else {
-                        pasa = true;
-                    }
-                }while (formato == false || pasa == true);
-                boleto = boleto_normal.split("[-/]");
-                System.out.println(Arrays.toString(boleto));
-                for (int i = 0; i < sorteo.length -1; i++){
-                    sorteo[i] = aleatorio.nextInt(50);;
-                    if (i != 0){
-                        if (sorteo [i] == sorteo[i -1]){
+                }while (formato == false || confirm == 1);
+                for (int i = 0; i < sorteo.length -1; i++) {
+                    sorteo[i] = aleatorio.nextInt(50);
+                }
+
+                for (int i = 0; i<sorteo.length -1 ;i++) {
+                    for (int j = 0; j < i; j++) {
+                        while (sorteo[i] == sorteo[j]) {
                             sorteo[i] = aleatorio.nextInt(50);
                         }
                     }
+
                 }
+                int complement = aleatorio.nextInt(50);
+                int reint = aleatorio.nextInt(10);
+                System.out.println("HA SALIDO: ");
                 System.out.println(Arrays.toString(sorteo));
+                for (int i = 0;i<sorteo.length -1 ;i++){
+                    if (complement == sorteo[i]){
+                        complement = aleatorio.nextInt(50);
+                    }
+                }
+                System.out.println("Complementario: " +complement);
+                System.out.println("Reintegro: " +  reint);
+                int acierto = 0;
+                int opcion_com = 0;
 
+                for (int i = 0;i<6;i++){
+                    int numeroBoleto = Integer.parseInt(boleto[i]);
+                    for (int j = 0; j < 6;j++ )
+                    if (numeroBoleto == sorteo[j]){
+                        acierto++;
+                    } else if (numeroBoleto == complement) {
+                        opcion_com = 1;
+                    }
+                }
+                System.out.println("RESULTADOS: ");
+                System.out.println(acierto + " aciertos");
+                if (opcion_com == 1){
+                    System.out.println("Complementario");
+                }
+                if (Integer.parseInt(boleto[6]) == reint){
+                    System.out.println("Reintegro");
+                }
 
+                break;
             }catch (InputMismatchException e1){
                 System.out.println("Error al introducir carcateres");
             }
