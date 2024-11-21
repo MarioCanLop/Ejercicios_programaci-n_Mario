@@ -746,4 +746,50 @@ public class Tema_3 {
             System.out.println("");
         }
     }
+
+    public void Ejercicio1_bat_matrices(){
+        Scanner entrada = new Scanner(System.in);
+        int matriz[][] = new int[3][3];
+        int num = 0;
+        for (int i = 0; i<matriz.length;i++){
+            for (int j =0; j< matriz[i].length ;j++){
+                System.out.println("Dame un numero para la matriz :");
+                matriz[i][j]= entrada.nextInt();
+            }
+        }
+        int exisiste = 0;
+        System.out.println("MATRIZ: ");
+        for (int i = 0; i<matriz.length;i++){
+            for (int j = 0; j<matriz[i].length;j++){
+                System.out.print(matriz[i][j] + " ");
+                exisiste = 1;
+
+            }
+            System.out.println("");
+
+        }
+        System.out.println("Dime un numero para buscarlo");
+        num = entrada.nextInt();
+        System.out.println("Salida");
+        for (int i = 0; i<matriz.length;i++){
+            for (int j = 0; j<matriz[i].length;j++){
+                if (matriz[i][j] == num){
+                    System.out.println("El numero " +num+ "se encuentra en la posición (" +i +", " + j + ")");
+
+                }
+            }
+
+        }
+        if (exisiste == 0){
+            System.out.println("El numero no exisiste");
+        }
+
+    }
+
+    public void Ejercicio3_bat_matrices(){
+        Scanner entrada = new Scanner(System.in);
+
+
+    }
+
 }

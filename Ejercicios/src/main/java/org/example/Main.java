@@ -18,6 +18,6 @@ import java.util.Scanner;
 public class Main{
     public static void main (String[]args){
         Tema_3 tema_3 = new Tema_3();
-        tema_3.matrices2();
+        tema_3.Ejercicio1_bat_matrices();
     }
 }
