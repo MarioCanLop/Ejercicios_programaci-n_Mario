@@ -796,34 +796,24 @@ public class Tema_3 {
         Scanner entrada = new Scanner(System.in);
         String matriz[][] = new String[10][10];
         String palabra = "";
-        boolean error = true;
-        do {
+        
+        for (int i = 0; i < matriz.length; i++) {
 
-            try {
+            System.out.println("Introduce la fila " + (i +1 )  +" : ");
+            String valor_fila[] = entrada.next().split("");
 
-
-                for (int i = 0; i < matriz.length; i++) {
-
-                    System.out.println("Introduce la fila " + (i + 1) + " : ");
-                    String valor_fila[] = entrada.next().split("");
-
-                    for (int j = 0; j < matriz[i].length; j++) {
-                        matriz[i][j] = valor_fila[j];
-                    }
-
-                }
-
-                for (String[] filas : matriz) {
-                    for (String columnas : filas) {
-                        System.out.print(columnas + " ");
-                    }
-                    System.out.print("\n");
-                }
-            }catch (ArrayIndexOutOfBoundsException E1){
-                System.out.println("Introduce las letras necesarias no mas");
+            for (int j = 0; j < matriz[i].length; j++) {
+                matriz[i][j]=valor_fila[j];
             }
-        }while (error = true);
 
+        }
+
+        for(String[] filas : matriz){
+            for (String columnas : filas){
+                System.out.print(columnas + " ");
+            }
+            System.out.print("\n");
+        }
         System.out.println("Introduce la palabra a buscar:");
         palabra = entrada.next();
         palabra.matches("[a-zA-Z]");
