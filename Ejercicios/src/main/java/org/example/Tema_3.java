@@ -796,76 +796,85 @@ public class Tema_3 {
         Scanner entrada = new Scanner(System.in);
         String matriz[][] = new String[10][10];
         String palabra = "";
-        
-        for (int i = 0; i < matriz.length; i++) {
+        boolean error = true;
+        do {
+            try {
 
-            System.out.println("Introduce la fila " + (i +1 )  +" : ");
-            String valor_fila[] = entrada.next().split("");
 
-            for (int j = 0; j < matriz[i].length; j++) {
-                matriz[i][j]=valor_fila[j];
+                for (int i = 0; i < matriz.length; i++) {
+
+                    System.out.println("Introduce la fila " + (i + 1) + " : ");
+                    String valor_fila[] = entrada.next().split("");
+
+                    for (int j = 0; j < matriz[i].length; j++) {
+                        matriz[i][j] = valor_fila[j];
+                    }
+
+                }
+
+                for (String[] filas : matriz) {
+                    for (String columnas : filas) {
+                        System.out.print(columnas + " ");
+                    }
+                    System.out.print("\n");
+                }
+                System.out.println("Introduce la palabra a buscar:");
+                palabra = entrada.next();
+                palabra.matches("[a-zA-Z]");
+                int pri = 0;
+                int seg = 1;
+                String[] letras = palabra.split("");
+                System.out.println(Arrays.toString(letras));
+                int si = 0;
+                for (int i = 0; i < matriz.length; i++) {
+                    for (int j = 0; j < matriz[i].length; j++) {
+                        if (matriz[i][j].equals(letras[0])) {
+
+                            int pri1 = i;
+                            int pri2 = j;
+                            if (j - matriz[i].length >= palabra.length() - 1 || matriz.length >= palabra.length() - 1) {
+
+                                boolean lado = (j - matriz[i].length >= palabra.length() - 1) ? true : false;
+                                boolean abajo = (matriz.length >= palabra.length() - 1) ? true : false;
+                                if (lado = true) {
+
+                                    for (int x = 1; x < letras.length; x++) {
+                                        if (matriz[i][j + x].equals(letras[x])) {
+                                            si++;
+                                            System.out.println(matriz[i][j + x] + letras[x]);
+                                            if (si == letras.length - 1) {
+                                                System.out.println("Palabra encontrada. En la posición: " + pri1 + ", " + pri2);
+                                            }
+                                        }
+                                    }
+                                }
+
+                                if (abajo = true) {
+                                    si = 0;
+                                }
+                                for (int x = 1; x < letras.length - 1; x++) {
+                                    if (matriz[i + x][j].equals(letras[x])) {
+                                        si++;
+                                        System.out.println(matriz[i + x][j] + letras[x]);
+                                        if (si == letras.length - 1) {
+                                            System.out.println("Palabra encontrada. En la posición: " + pri1 + ", " + pri2);
+                                        }
+                                    }
+                                }
+
+
+                            }
+                        }
+                    }
+                }
+
+                break;
+            }catch (InputMismatchException e1){
+                System.out.println("Error");
+            }catch (ArrayIndexOutOfBoundsException e2){
+                System.out.println("Error");
             }
-
-        }
-
-        for(String[] filas : matriz){
-            for (String columnas : filas){
-                System.out.print(columnas + " ");
-            }
-            System.out.print("\n");
-        }
-        System.out.println("Introduce la palabra a buscar:");
-        palabra = entrada.next();
-        palabra.matches("[a-zA-Z]");
-        int pri = 0;
-        int seg = 1;
-        String [] letras = palabra.split("");
-        System.out.println(Arrays.toString(letras));
-        int si = 0;
-        for (int i = 0; i< matriz.length; i++){
-             for (int j = 0; j <matriz[i].length; j++) {
-                 if (matriz[i][j].equals(letras[0])){
-
-                     int pri1 = i;
-                     int pri2 = j;
-                     if (j - matriz[i].length >= palabra.length() -1 || matriz.length >= palabra.length() -1){
-
-                         boolean lado = (j - matriz[i].length >= palabra.length() -1)?true:false;
-                         boolean abajo = (matriz.length >= palabra.length() -1)?true:false;
-                             if (lado = true){
-
-                                 for (int x = 1; x < letras.length ; x++) {
-                                     if (matriz[i][j + x].equals(letras[x])) {
-                                         si++;
-                                         System.out.println(matriz[i][j + x] + letras[x] );
-                                         if (si == letras.length -1) {
-                                             System.out.println("Palabra encontrada. En la posición: " + pri1 +", "+ pri2);
-                                         }
-                                     }
-                                 }
-                             }
-
-                             if (abajo = true){
-                                 si = 0;
-                             }
-                                 for (int x = 1; x < letras.length -1; x++) {
-                                     if (matriz[i + x][j].equals(letras[x])) {
-                                         si++;
-                                         System.out.println(matriz[i + x][j] + letras[x] );
-                                         if (si == letras.length -1) {
-                                             System.out.println("Palabra encontrada. En la posición: " + pri1 +", "+ pri2);
-                                         }
-                                 }
-                             }
-
-
-                     }
-                 }
-         }
-        }
-        if (si == 0){
-            System.out.println("La palabra no esta en la sopa de letras");
-        }
+        }while (error);
 
     }
 
